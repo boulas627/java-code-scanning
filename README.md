@@ -53,3 +53,6 @@ Because the code doesn't meet the WAR packaging requirement, this application wo
 
 ## Jackson-Databind 
 This package appears to be vulnerable because of an inability to properly deserialize the data as outlined in CWE-502. Deserialization is the process of converting a set of bytes back into a fully functional Java object. This is essentially the process of rebuiliding an object and when user-controlled data is processed without the proper sanitization, a number of vulnerabilities may be present such as remote code execution or denial of service. It is likely that exploitation is possible when examining this vulnerability and because of this, it is best to upgrade the package to the necessary version.  
+
+
+Testing
