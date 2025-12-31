@@ -12,6 +12,8 @@ public class UserController {
 
     @GetMapping("/eval")
     public String eval(@RequestParam String expression) {
+
+        // The line of code below is vulnerable to a spring expression injection vulnerability
         ExpressionParser parser = new SpelExpressionParser();
 
     // the fix below assumes that SpEL usage is required and imposes various restrictions on its usage. The best case scenario would be to remove it entirely if possible. 
