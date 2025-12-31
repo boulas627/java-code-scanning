@@ -8,6 +8,15 @@ public class DeserializeUtil {
 
         // The line of code down below shows potential command injection due to the data field being user controlled. Deserializing data without proper sanitization could be reckless here. 
         ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
+
+        # the code fixes below assume that serialization is absolutely required. Ideally, we would avoid it entirely
+
+        ObjectInputFilter filter = ObjectInputFilter.Config.createFilter(
+            "com.example.vulnapp.model.*;java.base/*;!*"
+        );
+
+        ois.setObjectInputFilter(filter);
+        
         return ois.readObject();
     }
 }
